@@ -61,9 +61,221 @@
         ::-webkit-scrollbar-track { background: #0a0a0a; }
         ::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #404040; }
+        
+        .resume-scroll::-webkit-scrollbar { width: 4px; }
     </style>
 </head>
 <body class="overflow-x-hidden">
+
+    <!-- Resume / About Modal -->
+    <div id="resume-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-4 md:p-12 bg-black/90 backdrop-blur-md">
+        <div class="glass-card w-full max-w-5xl h-full max-h-[90vh] overflow-hidden flex flex-col rounded-3xl relative modal-enter" id="resume-content">
+            <!-- Close Button -->
+            <button onclick="toggleResumeModal()" class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition">
+                <i data-lucide="x" class="text-white w-5 h-5"></i>
+            </button>
+
+            <!-- Sticky Header -->
+            <div class="p-8 border-b border-white/10 shrink-0 bg-white/5">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold gradient-text">Shyam Nainamalai</h2>
+                        <p class="text-blue-400 font-mono mt-1">Senior Software Developer | Data Engineer</p>
+                    </div>
+                    <div class="flex flex-wrap gap-4 text-sm text-gray-400">
+                        <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-4 h-4"></i> Cincinnati, Ohio</span>
+                        <span class="flex items-center gap-1"><i data-lucide="briefcase" class="w-4 h-4"></i> 18+ Years Exp</span>
+                        <span class="flex items-center gap-1"><i data-lucide="mail" class="w-4 h-4"></i> wepshyam@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scrollable Body -->
+            <div class="flex-1 overflow-y-auto p-8 resume-scroll space-y-12">
+                
+                <!-- Profile Summary -->
+                <section>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="user" class="text-blue-400 w-5 h-5"></i> Profile
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed max-w-4xl">
+                        Experienced Developer/Data Engineer with over 18 years of expertise in designing and implementing scalable data solutions, BI applications, and ETL pipelines. Strong proficiency in SQL, Python, and Snowflake with a proven track record in optimizing data pipelines, ensuring data quality, and enabling business teams with actionable insights through BI tools. Adept at collaborating with cross-functional stakeholders and supporting complex production environments.
+                    </p>
+                </section>
+
+                <!-- Achievements Highlights -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-6 rounded-2xl bg-blue-600/10 border border-blue-500/20">
+                        <div class="text-blue-400 font-bold text-2xl mb-1">$800K Savings</div>
+                        <p class="text-sm text-gray-400">Developed a comprehensive automated testing suite that streamlined validation processes and reduced manual effort significantly for major financial clients.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-purple-600/10 border border-purple-500/20">
+                        <div class="text-purple-400 font-bold text-2xl mb-1">$500K Savings</div>
+                        <p class="text-sm text-gray-400">Enhanced automation framework to support daily workflows, enabling end-to-end automated dev/test solutions through robust Python scripts.</p>
+                    </div>
+                </section>
+
+                <!-- Professional Experience -->
+                <section>
+                    <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-2">
+                        <i data-lucide="history" class="text-blue-400 w-5 h-5"></i> Professional Experience
+                    </h3>
+                    
+                    <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-600 before:via-purple-600 before:to-transparent">
+                        
+                        <!-- Role 1 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black group-[.is-active]:bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[45%] glass-card p-6 rounded-2xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <time class="font-mono text-xs text-blue-400">2023 - PRESENT</time>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 uppercase">PNC Financial Services</span>
+                                </div>
+                                <h4 class="font-bold text-white">Senior Software Developer | Hive</h4>
+                                <ul class="mt-4 space-y-2 text-sm text-gray-400 list-disc list-inside">
+                                    <li>Focusing on data analysis, DDL comparisons, and building lending datasets across the loan lifecycle.</li>
+                                    <li>Developed and validated HQL, Python, and PySpark code scripts, ensuring sub-second accuracy and peak performance.</li>
+                                    <li>Automated tasks using Python and Shell scripting, including fraud tracking solutions and account closures.</li>
+                                    <li>Optimized data pipelines and designed BI applications in Tableau to improve reporting efficiency.</li>
+                                    <li>Scheduled and monitored complex workflows via Cloudera platform.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-gray-500"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[45%] glass-card p-6 rounded-2xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <time class="font-mono text-xs text-purple-400">2018 - 2022</time>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 uppercase">PNC Financial Services</span>
+                                </div>
+                                <h4 class="font-bold text-white">Quality Engineering Lead - MIP Analytics</h4>
+                                <ul class="mt-4 space-y-2 text-sm text-gray-400 list-disc list-inside">
+                                    <li>Led end-to-end testing for the Model Integration Platform (MIP) to ensure data accuracy for predictive models.</li>
+                                    <li>Automated test processes using Python (Pandas) and Unix shell scripts for repeatable workflows.</li>
+                                    <li>Managed model onboarding, data validation, and test documentation during critical CECL/CCAR cycles.</li>
+                                    <li>Ensured data integrity for large-scale, cloud-based data platforms.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Role 3 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="activity" class="w-5 h-5 text-gray-500"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[45%] glass-card p-6 rounded-2xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <time class="font-mono text-xs text-green-400">2013 - 2018</time>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 uppercase">MoneyGram International</span>
+                                </div>
+                                <h4 class="font-bold text-white">Production Support Lead</h4>
+                                <ul class="mt-4 space-y-2 text-sm text-gray-400 list-disc list-inside">
+                                    <li>Led application support for Money Transfer and Payment systems, ensuring 100% SLA compliance.</li>
+                                    <li>Managed real-time incident resolution using Splunk and Dynatrace monitoring tools.</li>
+                                    <li>Supported over 1,000 batch jobs and collaborated with client managers for new application onboarding.</li>
+                                    <li>Implemented proactive issue resolution strategies for high-volume transactions.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Role 4 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <i data-lucide="code" class="w-5 h-5 text-gray-500"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[45%] glass-card p-6 rounded-2xl">
+                                <div class="flex items-center justify-between mb-2">
+                                    <time class="font-mono text-xs text-orange-400">2006 - 2013</time>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 uppercase">Earlier Experience</span>
+                                </div>
+                                <h4 class="font-bold text-white">QA & Production Support Lead</h4>
+                                <ul class="mt-4 space-y-2 text-sm text-gray-400 list-disc list-inside">
+                                    <li>Spearheaded QA processes by managing priorities and defining quality metrics in Agile/Waterfall environments.</li>
+                                    <li>Developed and executed test strategies and implemented automation frameworks for data integrity.</li>
+                                    <li>Hands-on experience in API and performance testing, resolving issues in cloud-based data platforms.</li>
+                                    <li>Conducted audits and cleanup to maintain high data quality standards.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills & Education Recap -->
+                <section class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-xl font-bold text-white mb-6">Technical Skills</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest text-blue-400 mb-3">Programming & Pipes</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">SQL</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Python</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">PySpark</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">ETL</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Unix Shell Scripting</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Datastage</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest text-purple-400 mb-3">Data Platforms</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Snowflake</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Hive</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">HDFS</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Cloudera</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest text-green-400 mb-3">BI & Monitoring</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Tableau</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">WebFOCUS</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Splunk</span>
+                                    <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs">Dynatrace</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-6">Education</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-tight">Master for Business Administration</h4>
+                                <p class="text-xs text-gray-500 mt-1">Manonmaniam Sundaranar University, INDIA</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-tight">Bachelor of Science, Physics</h4>
+                                <p class="text-xs text-gray-500 mt-1">Bharathiar University, INDIA</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Clients -->
+                <section class="border-t border-white/10 pt-12">
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6">Key Clients Served</h3>
+                    <div class="flex flex-wrap gap-x-12 gap-y-4">
+                        <span class="text-white font-semibold">PNC Financial Services</span>
+                        <span class="text-white font-semibold">MoneyGram International</span>
+                        <span class="text-white font-semibold">Morgan Stanley</span>
+                        <span class="text-white font-semibold">Level 3 Communications</span>
+                    </div>
+                </section>
+
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="p-6 border-t border-white/10 flex justify-center bg-white/5">
+                <button onclick="toggleResumeModal()" class="px-12 py-3 bg-blue-600 rounded-full font-bold hover:bg-blue-500 transition">Close Resume</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Modal -->
     <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-black/80 backdrop-blur-sm">
@@ -106,8 +318,8 @@
     <nav class="fixed top-0 w-full z-50 glass-card border-t-0 border-x-0 bg-opacity-80">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <span class="text-xl font-bold gradient-text">Shyam Nainamalai</span>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <button onclick="toggleResumeModal()" class="hover:text-blue-400 transition">About</button>
                 <a href="#projects" class="hover:text-blue-400 transition">Experiments</a>
                 <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
                 <a href="#interactive" class="hover:text-blue-400 transition">Playground</a>
@@ -136,7 +348,7 @@
             </p>
             <div class="flex flex-wrap justify-center gap-6">
                 <a href="#projects" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all shadow-lg shadow-white/5">See My Experiments</a>
-                <a href="#skills" class="px-10 py-4 border border-gray-700 rounded-full hover:bg-white/5 transition-all">My Tech Stack</a>
+                <button onclick="toggleResumeModal()" class="px-10 py-4 border border-gray-700 rounded-full hover:bg-white/5 transition-all">Full Resume</button>
             </div>
         </div>
     </header>
@@ -353,29 +565,52 @@
         lucide.createIcons();
 
         // Modal Logic
-        const modal = document.getElementById('contact-modal');
-        const modalContent = document.getElementById('modal-content');
+        const contactModal = document.getElementById('contact-modal');
+        const contactContent = document.getElementById('modal-content');
+        const resumeModal = document.getElementById('resume-modal');
+        const resumeContent = document.getElementById('resume-content');
         
         function toggleModal() {
-            if (modal.classList.contains('hidden')) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
+            if (contactModal.classList.contains('hidden')) {
+                contactModal.classList.remove('hidden');
+                contactModal.classList.add('flex');
                 setTimeout(() => {
-                    modalContent.classList.remove('modal-enter');
-                    modalContent.classList.add('modal-active');
+                    contactContent.classList.remove('modal-enter');
+                    contactContent.classList.add('modal-active');
                 }, 10);
             } else {
-                modalContent.classList.remove('modal-active');
-                modalContent.classList.add('modal-enter');
+                contactContent.classList.remove('modal-active');
+                contactContent.classList.add('modal-enter');
                 setTimeout(() => {
-                    modal.classList.remove('flex');
-                    modal.classList.add('hidden');
+                    contactModal.classList.remove('flex');
+                    contactModal.classList.add('hidden');
                 }, 300);
             }
         }
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) toggleModal();
+        function toggleResumeModal() {
+            if (resumeModal.classList.contains('hidden')) {
+                resumeModal.classList.remove('hidden');
+                resumeModal.classList.add('flex');
+                setTimeout(() => {
+                    resumeContent.classList.remove('modal-enter');
+                    resumeContent.classList.add('modal-active');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+            } else {
+                resumeContent.classList.remove('modal-active');
+                resumeContent.classList.add('modal-enter');
+                setTimeout(() => {
+                    resumeModal.classList.remove('flex');
+                    resumeModal.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) toggleModal();
+            if (e.target === resumeModal) toggleResumeModal();
         });
 
         // Mixer Logic
