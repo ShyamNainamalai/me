@@ -14,6 +14,9 @@
             scroll-behavior: smooth;
             background-color: #0a0a0a;
             color: #f5f5f5;
+            /* Disable text selection to further protect content */
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .gradient-text {
@@ -321,6 +324,7 @@
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
                 <button onclick="toggleResumeModal()" class="hover:text-blue-400 transition">About</button>
                 <a href="#projects" class="hover:text-blue-400 transition">Experiments</a>
+                <a href="#ai-cinema" class="hover:text-blue-400 transition">Cinema</a>
                 <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
                 <a href="#interactive" class="hover:text-blue-400 transition">Playground</a>
                 <button onclick="toggleModal()" class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition">Get In Touch</button>
@@ -332,7 +336,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="about" class="pt-40 pb-32 px-6 relative">
+    <header id="about" class="pt-40 pb-16 px-6 relative">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full overflow-hidden pointer-events-none -z-10">
             <div class="w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] absolute -top-20 -left-20"></div>
             <div class="w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] absolute top-1/2 right-0"></div>
@@ -353,8 +357,8 @@
         </div>
     </header>
 
-    <!-- Projects Gallery -->
-    <section id="projects" class="py-20 px-6">
+    <!-- AI Experiments Gallery -->
+    <section id="projects" class="pt-10 pb-20 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-end mb-12">
                 <div>
@@ -398,23 +402,22 @@
                     </div>
                 </a>
 
-                <!-- Trending Font Generator -->
-                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full">
+                <!-- Text Studio (Live) -->
+                <a href="https://wepshyam.github.io/text-studio/" target="_blank" class="glass-card rounded-2xl overflow-hidden group block flex flex-col h-full">
                     <div class="h-48 bg-gradient-to-br from-emerald-900 to-black flex items-center justify-center relative shrink-0">
                         <i data-lucide="type" class="w-16 h-16 text-white/20 group-hover:scale-110 transition duration-500"></i>
                     </div>
                     <div class="p-6 flex flex-col grow">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Trending Font Generator</h3>
-                            <span class="bg-green-500/10 text-green-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">Design AI</span>
+                            <h3 class="text-xl font-bold">Text Studio</h3>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">Web App</span>
                         </div>
                         <p class="text-sm text-gray-400 mb-6 grow leading-relaxed">Copy and paste text in any language to create unique stylized typography. Generate and download results as a high-quality PNG for professional editing.</p>
-                        <div class="flex gap-2 shrink-0">
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded">Typography</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded">Asset Gen</span>
+                        <div class="flex items-center gap-2 text-blue-400 text-sm font-bold shrink-0">
+                            View Live Project <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- AI Games -->
                 <div class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full">
@@ -426,12 +429,40 @@
                             <h3 class="text-xl font-bold">NeuroPlay Games</h3>
                             <span class="bg-rose-500/10 text-rose-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">RL Games</span>
                         </div>
-                        <p class="text-sm text-gray-400 mb-6 grow leading-relaxed">Trying to build AI agents that can play simple games. Experiments with Q-Learning and Canvas animations.</p>
+                        <p class="text-sm text-gray-400 mb-6 grow font-mono text-center flex items-center justify-center italic">coming soon ...</p>
                         <div class="flex gap-2 shrink-0">
                             <span class="text-xs px-2 py-1 bg-white/5 rounded">JS</span>
                             <span class="text-xs px-2 py-1 bg-white/5 rounded">Reinforcement</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Motion Gallery -->
+    <section id="ai-cinema" class="py-20 px-6 bg-[#080808]">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-card rounded-[3rem] p-12 md:p-20 overflow-hidden relative group">
+                <!-- Background Decoration -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px]"></div>
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]"></div>
+                
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-purple-500/20 transform group-hover:rotate-12 transition-transform duration-500">
+                        <i data-lucide="film" class="text-white w-10 h-10"></i>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">AI <span class="gradient-text">Motion Gallery</span></h2>
+                    <p class="text-gray-400 text-lg max-w-2xl mb-12 leading-relaxed">
+                        Beyond data engineering, I experiment with generative AI video models. I've curated a collection of AI-created videos, short films, and motion experiments that push the boundaries of creative technology.
+                    </p>
+                    
+                    <a href="https://drive.google.com/drive/folders/1G_K62uSxszhlAH7S8wr5iiaZaiNNGuRG" target="_blank" class="inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all scale-100 hover:scale-105 active:scale-95 shadow-xl shadow-white/5">
+                        <i data-lucide="folder-open" class="w-5 h-5"></i>
+                        Open Video Collection
+                    </a>
+                    
+                    <p class="mt-8 text-xs font-mono text-gray-600 uppercase tracking-widest">Shared via Google Drive</p>
                 </div>
             </div>
         </div>
@@ -561,6 +592,34 @@
     </footer>
 
     <script>
+        // Security Deterrents: Disable Right-Click and Common Inspect Shortcuts
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.onkeydown = function(e) {
+            // Disable F12
+            if(event.keyCode == 123) {
+                return false;
+            }
+            // Disable Ctrl+Shift+I (Inspect)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            // Disable Ctrl+Shift+C (Inspect Element)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            // Disable Ctrl+Shift+J (Console)
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            // Disable Ctrl+U (View Source)
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
         // Initialize Lucide Icons
         lucide.createIcons();
 
