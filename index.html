@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyam Nainamalai | AI Explorer & Data Enthusiast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(96, 165, 252, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .slider-thumb::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #60a5fa;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(96, 165, 252, 0.5);
+        }
+
+        /* Modal Animation */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #404040; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-black/80 backdrop-blur-sm">
+        <div class="glass-card w-full max-w-md p-8 rounded-3xl relative modal-enter" id="modal-content">
+            <button onclick="toggleModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="mail" class="text-blue-400 w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2">Get In Touch</h2>
+                <p class="text-gray-400 mb-8">Let's talk about data, AI, or cool projects.</p>
+                
+                <div class="space-y-4 text-left">
+                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+                        <i data-lucide="phone" class="text-blue-400 w-5 h-5"></i>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500">Phone</p>
+                            <p class="font-mono text-lg text-white">612-481-5374</p>
+                        </div>
+                    </div>
+                    <a href="mailto:wepshyam@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-blue-600/10 border border-blue-500/20 hover:bg-blue-600/20 transition group">
+                        <i data-lucide="send" class="text-blue-400 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition"></i>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500">Email Address</p>
+                            <p class="font-mono text-lg text-white">wepshyam@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+
+                <button onclick="toggleModal()" class="mt-8 w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card border-t-0 border-x-0 bg-opacity-80">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="text-xl font-bold gradient-text">Shyam Nainamalai</span>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Experiments</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
+                <a href="#interactive" class="hover:text-blue-400 transition">Playground</a>
+                <button onclick="toggleModal()" class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition">Get In Touch</button>
+            </div>
+            <button class="md:hidden text-white" id="menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="about" class="pt-40 pb-32 px-6 relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full overflow-hidden pointer-events-none -z-10">
+            <div class="w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] absolute -top-20 -left-20"></div>
+            <div class="w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] absolute top-1/2 right-0"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-blue-400 font-semibold mb-4 tracking-widest uppercase text-sm">AI Explorer • Data Engineer • Builder</h2>
+            <h1 class="text-5xl md:text-8xl font-bold mb-8 leading-tight">
+                Exploring the <br/> <span class="gradient-text">AI Frontier</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl mb-12 mx-auto max-w-2xl leading-relaxed">
+                I'm a Data Engineer by day and an AI enthusiast by night. I love experimenting with new technologies, building creative projects, and seeing what happens when data meets intelligence.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#projects" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all shadow-lg shadow-white/5">See My Experiments</a>
+                <a href="#skills" class="px-10 py-4 border border-gray-700 rounded-full hover:bg-white/5 transition-all">My Tech Stack</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects Gallery -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-4">AI <span class="gradient-text">Experiments</span></h2>
+                    <p class="text-gray-400">Side projects where I test out new ideas and AI models.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Neural DJ Mixer (Live) -->
+                <a href="https://wepshyam.github.io/samdjmixer/" target="_blank" class="glass-card rounded-2xl overflow-hidden group block flex flex-col h-full">
+                    <div class="h-48 bg-gradient-to-br from-indigo-900 to-black flex items-center justify-center relative shrink-0">
+                        <i data-lucide="music" class="w-16 h-16 text-white/20 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-6 flex flex-col grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Neural DJ Mixer</h3>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">Audio AI</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 grow leading-relaxed">Testing out reinforcement learning to see if an agent can mix tracks better than a human. Focus on BPM matching.</p>
+                        <div class="flex items-center gap-2 text-blue-400 text-sm font-bold shrink-0">
+                            View Live Project <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Random Number Generator (Live) -->
+                <a href="https://wepshyam.github.io/number-generator/" target="_blank" class="glass-card rounded-2xl overflow-hidden group block flex flex-col h-full">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-black flex items-center justify-center relative shrink-0">
+                        <i data-lucide="external-link" class="w-16 h-16 text-white/20 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-6 flex flex-col grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Random Number Generator</h3>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">Web App</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 grow leading-relaxed">A sleek utility for generating secure random values. Integrated as a live GitHub Pages project.</p>
+                        <div class="flex items-center gap-2 text-blue-400 text-sm font-bold shrink-0">
+                            View Live Project <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Trending Font Generator -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full">
+                    <div class="h-48 bg-gradient-to-br from-emerald-900 to-black flex items-center justify-center relative shrink-0">
+                        <i data-lucide="type" class="w-16 h-16 text-white/20 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-6 flex flex-col grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">Trending Font Generator</h3>
+                            <span class="bg-green-500/10 text-green-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">Design AI</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 grow leading-relaxed">Copy and paste text in any language to create unique stylized typography. Generate and download results as a high-quality PNG for professional editing.</p>
+                        <div class="flex gap-2 shrink-0">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded">Typography</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded">Asset Gen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Games -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full">
+                    <div class="h-48 bg-gradient-to-br from-rose-900 to-black flex items-center justify-center relative shrink-0">
+                        <i data-lucide="gamepad-2" class="w-16 h-16 text-white/20 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-6 flex flex-col grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">NeuroPlay Games</h3>
+                            <span class="bg-rose-500/10 text-rose-400 text-[10px] uppercase px-2 py-1 rounded shrink-0 ml-2">RL Games</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 grow leading-relaxed">Trying to build AI agents that can play simple games. Experiments with Q-Learning and Canvas animations.</p>
+                        <div class="flex gap-2 shrink-0">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded">JS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded">Reinforcement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-[#0d0d0d]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-16">Data Engineering <span class="text-blue-500">Skills</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-xl">
+                    <i data-lucide="database" class="w-10 h-10 text-blue-400 mx-auto mb-4"></i>
+                    <h3 class="font-bold mb-2">Storage</h3>
+                    <p class="text-xs text-gray-500">Snowflake, BigQuery, PostgreSQL, MongoDB</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <i data-lucide="git-branch" class="w-10 h-10 text-purple-400 mx-auto mb-4"></i>
+                    <h3 class="font-bold mb-2">Pipelines</h3>
+                    <p class="text-xs text-gray-500">Apache Airflow, dbt, Spark Streaming</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <i data-lucide="cloud" class="w-10 h-10 text-green-400 mx-auto mb-4"></i>
+                    <h3 class="font-bold mb-2">Cloud</h3>
+                    <p class="text-xs text-gray-500">AWS (S3, Redshift), GCP, Docker, Kubernetes</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <i data-lucide="cpu" class="w-10 h-10 text-orange-400 mx-auto mb-4"></i>
+                    <h3 class="font-bold mb-2">AI Exploration</h3>
+                    <p class="text-xs text-gray-500">PyTorch, TensorFlow, LLM Fine-tuning, RL</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section id="interactive" class="py-20 bg-[#0a0a0a] px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Interactive <span class="text-blue-500">Playground</span></h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- DJ Mixer Simulator -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-blue-600 rounded-lg">
+                            <i data-lucide="sliders" class="text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">DJ Mixer <span class="text-gray-500 text-sm font-normal">Idea</span></h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-8">
+                        <div class="text-center">
+                            <div class="w-32 h-32 rounded-full border-4 border-dashed border-gray-700 mx-auto flex items-center justify-center animate-spin" style="animation-duration: 3s;">
+                                <div class="w-24 h-24 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                    <div class="w-4 h-4 rounded-full bg-blue-500"></div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-xs font-mono uppercase text-gray-500">Deck A</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 rounded-full border-4 border-dashed border-gray-700 mx-auto flex items-center justify-center">
+                                <div class="w-24 h-24 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                    <div class="w-4 h-4 rounded-full bg-purple-500/50"></div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-xs font-mono uppercase text-gray-500">Deck B</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs mb-2">
+                                <span>CROSSFADER</span>
+                                <span id="fader-val">CENTER</span>
+                            </div>
+                            <input type="range" class="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer slider-thumb" min="0" max="100" value="50" oninput="updateMixer(this.value)">
+                        </div>
+                        <div class="flex gap-4">
+                            <button class="flex-1 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 font-bold text-sm">SYNC BEATS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Local Simulation -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-green-600 rounded-lg">
+                            <i data-lucide="dice-5" class="text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Local <span class="text-gray-500 text-sm font-normal">Sim</span></h2>
+                    </div>
+                    
+                    <div class="bg-black/40 rounded-2xl p-12 text-center mb-8">
+                        <span id="gen-number" class="text-7xl font-bold tracking-tighter text-green-400">0000</span>
+                        <p class="text-gray-500 mt-4 text-sm font-mono" id="gen-status">READY</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <button onclick="generateNumber()" class="w-full py-4 bg-green-600 rounded-xl hover:bg-green-500 font-bold transition flex items-center justify-center gap-2">
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            RUN LOCAL GEN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Let's connect!</h2>
+            <div class="mb-12 space-y-2">
+                <p class="text-gray-400 max-w-xl mx-auto leading-relaxed">I'm always down to talk about cool tech, data pipelines, or new AI tools. Drop me a line!</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mt-6">
+                    <span class="flex items-center gap-2 text-blue-400 font-mono"><i data-lucide="phone" class="w-4 h-4"></i> 612-481-5374</span>
+                    <a href="mailto:wepshyam@gmail.com" class="flex items-center gap-2 text-blue-400 font-mono hover:underline"><i data-lucide="mail" class="w-4 h-4"></i> wepshyam@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="flex justify-center gap-8 mb-16">
+                <a href="#" class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i data-lucide="github"></i></a>
+                <a href="#" class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i data-lucide="linkedin"></i></a>
+            </div>
+
+            <p class="text-gray-600 text-sm font-mono">&copy; 2024 Shyam Nainamalai. AI Explorer & Data Enthusiast.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Modal Logic
+        const modal = document.getElementById('contact-modal');
+        const modalContent = document.getElementById('modal-content');
+        
+        function toggleModal() {
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modalContent.classList.remove('modal-enter');
+                    modalContent.classList.add('modal-active');
+                }, 10);
+            } else {
+                modalContent.classList.remove('modal-active');
+                modalContent.classList.add('modal-enter');
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) toggleModal();
+        });
+
+        // Mixer Logic
+        function updateMixer(val) {
+            const faderText = document.getElementById('fader-val');
+            if(val < 40) faderText.innerText = 'FOCUS A';
+            else if(val > 60) faderText.innerText = 'FOCUS B';
+            else faderText.innerText = 'CENTER';
+        }
+
+        // Number Generator Logic
+        function generateNumber() {
+            const display = document.getElementById('gen-number');
+            const status = document.getElementById('gen-status');
+            status.innerText = 'CALCULATING...';
+            display.classList.add('animate-pulse');
+
+            setTimeout(() => {
+                const randomNum = Math.floor(1000 + Math.random() * 9000);
+                display.innerText = randomNum;
+                display.classList.remove('animate-pulse');
+                status.innerText = 'DONE';
+            }, 400);
+        }
+
+        // Mobile Menu
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            const nav = document.querySelector('.md\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('w-full');
+            nav.classList.toggle('bg-black');
+            nav.classList.toggle('p-6');
+        });
+    </script>
+</body>
+</html>
